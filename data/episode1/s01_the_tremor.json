@@ -1,0 +1,994 @@
+{
+  "id": "s01_the_tremor",
+  "title": "The Tremor",
+  "entry": "wake_01",
+  "stage": {
+    "bg": "kharwyn_field",
+    "palette": "ASHFALL",
+    "cast": ["protagonist"],
+    "bed": "battlefield"
+  },
+  "on_enter": [
+    { "flag": "ep1_started" },
+    { "meet": "brother" }
+  ],
+  "on_exit": [
+    { "flag": "s01_complete" }
+  ],
+
+  "nodes": {
+
+    "wake_01": {
+      "type": "line",
+      "speaker": "narrator",
+      "text": "You come back to yourself one sense at a time. Taste first — copper, and grit.",
+      "shot": { "framing": "wide", "hold": 1.2 },
+      "next": "wake_02"
+    },
+    "wake_02": {
+      "type": "line",
+      "speaker": "narrator",
+      "text": "Then the cold. You are lying face-down in a field that was a wheat field this morning.",
+      "next": "wake_03"
+    },
+    "wake_03": {
+      "type": "line",
+      "speaker": "narrator",
+      "text": "Then the quiet. That is the part that gets you upright.",
+      "next": "wake_04"
+    },
+    "wake_04": {
+      "type": "line",
+      "speaker": "narrator",
+      "text": "Nine hundred men were screaming here. Now there is wind, and something far off that is burning without crackling.",
+      "effects": [ { "pulse": "dread", "intensity": 0.25 } ],
+      "next": "wake_05"
+    },
+    "wake_05": {
+      "type": "line",
+      "speaker": "narrator",
+      "text": "Kharwyn Hold is still on the ridge where it has been for four hundred years. Most of it.",
+      "shot": { "framing": "mid", "hold": 1.4 },
+      "next": "wake_06"
+    },
+    "wake_06": {
+      "type": "line",
+      "speaker": "narrator",
+      "text": "You were on the east wall. The east wall is a mile behind you and you do not remember walking.",
+      "next": "wake_07"
+    },
+    "wake_07": {
+      "type": "line",
+      "speaker": "protagonist",
+      "text": "Cael.",
+      "tone": "strained",
+      "shot": { "framing": "close", "focus": "protagonist", "hold": 0.8 },
+      "next": "first_choice"
+    },
+
+    "first_choice": {
+      "type": "choice",
+      "prompt": "Your brother was on the east wall with you.",
+      "options": [
+        {
+          "id": "call_out",
+          "text": "Shout for him.",
+          "tone": "warm",
+          "effects": [
+            { "flag": "shouted_in_the_open" },
+            { "adjust": "brother", "stat": "trust", "by": 1 }
+          ],
+          "next": "call_out_01"
+        },
+        {
+          "id": "stay_quiet",
+          "text": "Stay low. Whatever is out here can hear you too.",
+          "tone": "cold",
+          "effects": [ { "flag": "kept_discipline" } ],
+          "next": "stay_quiet_01"
+        },
+        {
+          "id": "look_hold",
+          "text": "Look at the Hold first. Understand what happened.",
+          "tone": "curious",
+          "effects": [
+            { "flag": "studied_the_hold" },
+            { "rumor": "the_hold_is_hollow", "source": "self" }
+          ],
+          "next": "look_hold_01"
+        }
+      ]
+    },
+
+    "call_out_01": {
+      "type": "line",
+      "speaker": "narrator",
+      "text": "Your voice goes out across the field and nothing sends it back. No echo. The sound just stops, four feet from your mouth, like it hit a wall.",
+      "next": "call_out_02"
+    },
+    "call_out_02": {
+      "type": "line",
+      "speaker": "narrator",
+      "text": "You have shouted across this valley since you were eleven years old. It has always answered.",
+      "effects": [ { "rumor": "the_air_is_wrong_here", "source": "self" } ],
+      "next": "converge_01"
+    },
+
+    "stay_quiet_01": {
+      "type": "line",
+      "speaker": "narrator",
+      "text": "You stay down and count to thirty, the way Sergeant Merrick taught you. Merrick is nineteen feet to your left with his helm on and nothing inside it.",
+      "next": "stay_quiet_02"
+    },
+    "stay_quiet_02": {
+      "type": "line",
+      "speaker": "narrator",
+      "text": "Nothing moves in thirty. So you move.",
+      "next": "converge_01"
+    },
+
+    "look_hold_01": {
+      "type": "line",
+      "speaker": "narrator",
+      "text": "The curtain wall is intact. The gatehouse is intact. The banners are still flying, both crowns, on the same pole, which means somebody hoisted them and then nobody came to argue about it.",
+      "shot": { "framing": "insert", "hold": 1.0 },
+      "next": "look_hold_02"
+    },
+    "look_hold_02": {
+      "type": "line",
+      "speaker": "narrator",
+      "text": "The keep is gone. Not fallen — gone. There is a hole where the undercroft was, and the hole is the wrong shape for anything a siege engine does.",
+      "next": "look_hold_03"
+    },
+    "look_hold_03": {
+      "type": "line",
+      "speaker": "narrator",
+      "text": "It goes down. You are a long way away and you can still tell it goes down further than the mountain is tall.",
+      "next": "converge_01"
+    },
+
+    "converge_01": {
+      "type": "line",
+      "speaker": "narrator",
+      "text": "Somebody has been through this field already. The dead are in rows, and there are crosses.",
+      "shot": { "framing": "wide", "hold": 1.0 },
+      "next": "converge_02"
+    },
+    "converge_02": {
+      "type": "line",
+      "speaker": "narrator",
+      "text": "Crosses take time. Which means this did not happen an hour ago, whatever your body thinks.",
+      "effects": [ { "learn": "days_have_passed" } ],
+      "next": "converge_03"
+    },
+    "converge_03": {
+      "type": "line",
+      "speaker": "narrator",
+      "text": "Then, forty feet out, one of the rows moves.",
+      "effects": [ { "pulse": "dread", "intensity": 0.5 } ],
+      "next": "find_cael_01"
+    },
+
+    "find_cael_01": {
+      "type": "line",
+      "speaker": "narrator",
+      "text": "A hand, working at the dirt. Not clawing. Turning something over, patiently, the way he used to worry at a knot.",
+      "next": "find_cael_02"
+    },
+    "find_cael_02": {
+      "type": "line",
+      "speaker": "narrator",
+      "text": "Cael is nineteen and he has never been able to sit still, not once, not in church, not at their mother's burial.",
+      "next": "find_cael_03"
+    },
+    "find_cael_03": {
+      "type": "line",
+      "speaker": "narrator",
+      "text": "He is sitting very still now.",
+      "stage": {
+        "enter": [ { "who": "brother", "at": "right" } ],
+        "pulse": "dread",
+        "intensity": 0.35
+      },
+      "shot": { "framing": "mid", "focus": "brother", "hold": 1.2 },
+      "next": "find_cael_04"
+    },
+    "find_cael_04": {
+      "type": "line",
+      "speaker": "protagonist",
+      "text": "Cael. Cael, look at me.",
+      "next": "find_cael_05"
+    },
+    "find_cael_05": {
+      "type": "line",
+      "speaker": "brother",
+      "text": "Don't come over here.",
+      "tone": "strained",
+      "shot": { "framing": "close", "focus": "brother", "hold": 0.9 },
+      "next": "find_cael_06"
+    },
+    "find_cael_06": {
+      "type": "line",
+      "speaker": "protagonist",
+      "text": "Are you hurt?",
+      "next": "find_cael_07"
+    },
+    "find_cael_07": {
+      "type": "line",
+      "speaker": "brother",
+      "text": "I don't know. I don't think that's the — please don't come over here.",
+      "tone": "strained",
+      "next": "reveal_01"
+    },
+
+    "reveal_01": {
+      "type": "line",
+      "speaker": "narrator",
+      "text": "He turns his hands over.",
+      "stage": { "glow": "brother", "sting": "magic" },
+      "shot": { "framing": "insert", "focus": "brother", "hold": 1.6 },
+      "next": "reveal_02"
+    },
+    "reveal_02": {
+      "type": "line",
+      "speaker": "narrator",
+      "text": "There is light coming out of them. Not fire. It doesn't flicker and it doesn't warm the air and it is the colour of nothing you have a word for.",
+      "effects": [
+        { "flag": "saw_the_light" },
+        { "learn": "cael_is_marked" },
+        { "pulse": "heartbeat", "intensity": 0.7 }
+      ],
+      "next": "reveal_03"
+    },
+    "reveal_03": {
+      "type": "line",
+      "speaker": "narrator",
+      "text": "Father Aldric taught the two of you your catechism in a stone room with a low ceiling. The Devouring comes as a gift, he said. That is how you will know it. It will arrive looking like a gift.",
+      "next": "reveal_04"
+    },
+    "reveal_04": {
+      "type": "line",
+      "speaker": "brother",
+      "text": "It started three days ago. It stops sometimes. Then it doesn't.",
+      "next": "reveal_05"
+    },
+    "reveal_05": {
+      "type": "line",
+      "speaker": "brother",
+      "text": "I've been sitting here because I thought if I sat here long enough it would go and I could just — walk back and not have to say it out loud.",
+      "shot": { "framing": "close", "focus": "brother", "hold": 0.8 },
+      "next": "reveal_06"
+    },
+    "reveal_06": {
+      "type": "line",
+      "speaker": "brother",
+      "text": "Say something.",
+      "tone": "whisper",
+      "next": "react_choice"
+    },
+
+    "react_choice": {
+      "type": "choice",
+      "prompt": "He is waiting. He has been waiting three days.",
+      "timer": 8.0,
+      "default": "",
+      "on_timeout": "react_silence",
+      "timeout_effects": [
+        { "adjust": "brother", "stat": "trust", "by": -2 },
+        { "flag": "hesitated_at_cael" },
+        { "remember": "brother" }
+      ],
+      "options": [
+        {
+          "id": "reassure",
+          "text": "\"You're my brother. That's all this changes.\"",
+          "tone": "warm",
+          "effects": [
+            { "adjust": "brother", "stat": "trust", "by": 3 },
+            { "adjust": "brother", "stat": "loyalty", "by": 2 },
+            { "flag": "chose_cael_first" }
+          ],
+          "remember": "brother",
+          "next": "react_reassure"
+        },
+        {
+          "id": "recoil",
+          "text": "\"Stay where you are.\"",
+          "tone": "cold",
+          "effects": [
+            { "adjust": "brother", "stat": "trust", "by": -4 },
+            { "flag": "feared_cael" }
+          ],
+          "remember": "brother",
+          "next": "react_recoil"
+        },
+        {
+          "id": "faith",
+          "text": "\"There's a rite for this. Father Aldric knew it.\"",
+          "tone": "faith",
+          "effects": [
+            { "adjust": "brother", "stat": "trust", "by": -1 },
+            { "flag": "reached_for_doctrine" },
+            { "rumor": "the_rite_can_undo_it", "source": "self" }
+          ],
+          "remember": "brother",
+          "next": "react_faith"
+        },
+        {
+          "id": "ask",
+          "text": "\"Tell me exactly what happened under the Hold.\"",
+          "tone": "curious",
+          "effects": [
+            { "flag": "asked_before_judging" },
+            { "adjust": "brother", "stat": "trust", "by": 1 }
+          ],
+          "next": "react_ask"
+        }
+      ]
+    },
+
+    "react_reassure": {
+      "type": "line",
+      "speaker": "narrator",
+      "text": "Cael's shoulders come down about an inch. It is the first ordinary thing his body has done since you found him.",
+      "next": "react_reassure_02"
+    },
+    "react_reassure_02": {
+      "type": "line",
+      "speaker": "brother",
+      "text": "You don't believe that.",
+      "next": "react_reassure_03"
+    },
+    "react_reassure_03": {
+      "type": "line",
+      "speaker": "brother",
+      "text": "But thank you for saying it fast. You didn't have to say it fast.",
+      "next": "harrow_01"
+    },
+
+    "react_recoil": {
+      "type": "line",
+      "speaker": "narrator",
+      "text": "He goes very still again. He nods, several times, as though you have confirmed something he worked out days ago and was hoping to be wrong about.",
+      "next": "react_recoil_02"
+    },
+    "react_recoil_02": {
+      "type": "line",
+      "speaker": "brother",
+      "text": "Right. Yes. That's — yes.",
+      "tone": "whisper",
+      "next": "react_recoil_03"
+    },
+    "react_recoil_03": {
+      "type": "line",
+      "speaker": "brother",
+      "text": "I'll stay here, then. You should go and find your unit.",
+      "next": "harrow_01"
+    },
+
+    "react_faith": {
+      "type": "line",
+      "speaker": "brother",
+      "text": "A rite. You want to say words over me.",
+      "next": "react_faith_02"
+    },
+    "react_faith_02": {
+      "type": "line",
+      "speaker": "brother",
+      "text": "Aldric is under nine feet of the keep. Whatever he knew, he knew it about something that hadn't happened yet.",
+      "next": "react_faith_03"
+    },
+    "react_faith_03": {
+      "type": "line",
+      "speaker": "narrator",
+      "text": "He is right, and being right does not seem to be any comfort to him at all.",
+      "next": "harrow_01"
+    },
+
+    "react_ask": {
+      "type": "line",
+      "speaker": "brother",
+      "text": "The floor opened. That's not a figure of speech, it opened, like a mouth, and everything went down.",
+      "next": "react_ask_02"
+    },
+    "react_ask_02": {
+      "type": "line",
+      "speaker": "brother",
+      "text": "And while I was falling something spoke. Not words. But it was speaking, and it was speaking to me specifically, and I answered it.",
+      "effects": [
+        { "rumor": "something_spoke_in_the_breach", "source": "brother" },
+        { "flag": "cael_told_you_about_the_voice" }
+      ],
+      "next": "react_ask_03"
+    },
+    "react_ask_03": {
+      "type": "line",
+      "speaker": "brother",
+      "text": "I don't know what I agreed to. That's the part I can't stop thinking about.",
+      "tone": "whisper",
+      "next": "harrow_01"
+    },
+
+    "react_silence": {
+      "type": "line",
+      "speaker": "narrator",
+      "text": "You do not say anything.",
+      "next": "react_silence_02"
+    },
+    "react_silence_02": {
+      "type": "line",
+      "speaker": "narrator",
+      "text": "The silence goes on long enough to become an answer, and both of you hear it become one.",
+      "next": "react_silence_03"
+    },
+    "react_silence_03": {
+      "type": "line",
+      "speaker": "brother",
+      "text": "That's all right. I'd have taken a while too.",
+      "tone": "whisper",
+      "next": "harrow_01"
+    },
+
+    "harrow_01": {
+      "type": "line",
+      "speaker": "narrator",
+      "text": "A voice behind you, flat and close and much too near for someone you did not hear approach.",
+      "stage": {
+        "enter": [ { "who": "medic", "at": "left" } ],
+        "pulse": "dread",
+        "intensity": 0.55
+      },
+      "effects": [ { "meet": "medic" } ],
+      "shot": { "framing": "mid", "focus": "medic", "hold": 0.9 },
+      "next": "harrow_02"
+    },
+    "harrow_02": {
+      "type": "line",
+      "speaker": "medic",
+      "text": "Aldrethi. Good. Step to your left and keep stepping.",
+      "next": "harrow_03"
+    },
+    "harrow_03": {
+      "type": "line",
+      "speaker": "narrator",
+      "text": "Field medic. Aldrethi green under three days of other people's blood. He has a bonesaw in his right hand and he is holding it the way you hold a weapon, not the way you hold a tool.",
+      "shot": { "framing": "close", "focus": "medic", "hold": 0.9 },
+      "next": "harrow_04"
+    },
+    "harrow_04": {
+      "type": "line",
+      "speaker": "medic",
+      "text": "I've buried forty-one men in this field. Six of them were lit up like that when I found them. None of them stayed men very long.",
+      "next": "harrow_05"
+    },
+    "harrow_05": {
+      "type": "line",
+      "speaker": "brother",
+      "text": "I'm right here. You can say it to me.",
+      "next": "harrow_06"
+    },
+    "harrow_06": {
+      "type": "line",
+      "speaker": "medic",
+      "text": "I know you're right there, son. That's the problem I'm solving.",
+      "next": "harrow_07"
+    },
+    "harrow_07": {
+      "type": "line",
+      "speaker": "narrator",
+      "text": "He has not looked at you once. He is watching Cael's hands the way you watch a dog you have already decided about.",
+      "shot": { "framing": "mid", "focus": "brother", "hold": 0.8 },
+      "next": "harrow_choice"
+    },
+
+    "harrow_choice": {
+      "type": "choice",
+      "prompt": "The bonesaw hasn't moved. Neither has he.",
+      "timer": 6.5,
+      "default": "",
+      "on_timeout": "harrow_timeout",
+      "timeout_effects": [
+        { "adjust": "brother", "stat": "trust", "by": -2 },
+        { "adjust": "medic", "stat": "trust", "by": 1 },
+        { "flag": "let_harrow_lead" }
+      ],
+      "options": [
+        {
+          "id": "shield",
+          "text": "Put yourself between them.",
+          "tone": "violent",
+          "effects": [
+            { "adjust": "brother", "stat": "trust", "by": 3 },
+            { "adjust": "brother", "stat": "loyalty", "by": 3 },
+            { "adjust": "medic", "stat": "trust", "by": -2 },
+            { "flag": "stood_for_cael" }
+          ],
+          "remember": "medic",
+          "next": "harrow_shield"
+        },
+        {
+          "id": "reason",
+          "text": "\"Six out of how many? You don't know either.\"",
+          "tone": "curious",
+          "effects": [
+            { "adjust": "medic", "stat": "trust", "by": 2 },
+            { "flag": "argued_from_ignorance" },
+            { "rumor": "the_marked_always_turn", "source": "medic" }
+          ],
+          "next": "harrow_reason"
+        },
+        {
+          "id": "lie",
+          "text": "\"He's not Marked. He's carrying a Vaethari lamp he stripped off a sapper.\"",
+          "tone": "cold",
+          "effects": [
+            { "flag": "lied_to_harrow" },
+            { "adjust": "medic", "stat": "trust", "by": 1 },
+            { "adjust": "brother", "stat": "trust", "by": 1 },
+            { "bump": "lies_told" }
+          ],
+          "remember": "brother",
+          "next": "harrow_lie"
+        },
+        {
+          "id": "step_aside",
+          "text": "Step to your left.",
+          "tone": "cold",
+          "if": "not has_flag('chose_cael_first')",
+          "locked_text": "Step to your left. [You already told him he was your brother]",
+          "effects": [
+            { "adjust": "brother", "stat": "trust", "by": -6 },
+            { "adjust": "medic", "stat": "trust", "by": 3 },
+            { "flag": "stepped_aside" }
+          ],
+          "remember": "brother",
+          "next": "harrow_aside"
+        }
+      ]
+    },
+
+    "harrow_shield": {
+      "type": "line",
+      "speaker": "narrator",
+      "text": "You move. It is not a decision so much as a thing your legs do while the rest of you is still arguing.",
+      "next": "harrow_shield_02"
+    },
+    "harrow_shield_02": {
+      "type": "line",
+      "speaker": "medic",
+      "text": "Ah.",
+      "next": "harrow_shield_03"
+    },
+    "harrow_shield_03": {
+      "type": "line",
+      "speaker": "medic",
+      "text": "Brothers. Should have seen it — you've got the same jaw. That makes this harder, and it doesn't make it different.",
+      "next": "harrow_shield_04"
+    },
+    "harrow_shield_04": {
+      "type": "line",
+      "speaker": "narrator",
+      "text": "He lowers the saw. Not far. About as far as a man lowers a thing he expects to raise again.",
+      "next": "deduce_setup_01"
+    },
+
+    "harrow_reason": {
+      "type": "line",
+      "speaker": "medic",
+      "text": "Six out of six. That's how many I've seen. You want to tell me the number that makes six out of six acceptable odds, I'll listen.",
+      "next": "harrow_reason_02"
+    },
+    "harrow_reason_02": {
+      "type": "line",
+      "speaker": "narrator",
+      "text": "It is not a good argument. It is not a stupid one either, and that is the trouble with all of this — nobody here has anything better than what they have seen with their own eyes.",
+      "next": "harrow_reason_03"
+    },
+    "harrow_reason_03": {
+      "type": "line",
+      "speaker": "medic",
+      "text": "But you're right that I don't know. I'll grant you that much, and I'll grant it standing exactly where I'm standing.",
+      "next": "deduce_setup_01"
+    },
+
+    "harrow_lie": {
+      "type": "line",
+      "speaker": "narrator",
+      "text": "The lie comes out level and easy and you have no idea where you learned to do that.",
+      "next": "harrow_lie_02"
+    },
+    "harrow_lie_02": {
+      "type": "line",
+      "speaker": "narrator",
+      "text": "Cael's face does something complicated. He closes his hands.",
+      "next": "harrow_lie_03"
+    },
+    "harrow_lie_03": {
+      "type": "line",
+      "speaker": "medic",
+      "text": "A lamp.",
+      "next": "harrow_lie_04"
+    },
+    "harrow_lie_04": {
+      "type": "line",
+      "speaker": "medic",
+      "text": "Vaethari make good lamps. That'd be the first sensible thing I've heard in three days.",
+      "next": "harrow_lie_05"
+    },
+    "harrow_lie_05": {
+      "type": "line",
+      "speaker": "narrator",
+      "text": "He does not believe you. He wants to, which is not the same thing, and for now he is choosing to behave as though he does.",
+      "effects": [ { "rumor": "harrow_believed_the_lamp", "source": "self" } ],
+      "next": "deduce_setup_01"
+    },
+
+    "harrow_aside": {
+      "type": "line",
+      "speaker": "narrator",
+      "text": "You step to your left.",
+      "next": "harrow_aside_02"
+    },
+    "harrow_aside_02": {
+      "type": "line",
+      "speaker": "narrator",
+      "text": "Cael does not say anything about it. He watches you do it, and then he keeps watching the place where you were.",
+      "next": "harrow_aside_03"
+    },
+    "harrow_aside_03": {
+      "type": "line",
+      "speaker": "medic",
+      "text": "Sensible lad.",
+      "next": "harrow_aside_04"
+    },
+    "harrow_aside_04": {
+      "type": "line",
+      "speaker": "narrator",
+      "text": "He does not use the saw. He was, it turns out, waiting to see what you would do. You will not know for a long time whether that was a test you failed.",
+      "next": "deduce_setup_01"
+    },
+
+    "harrow_timeout": {
+      "type": "line",
+      "speaker": "narrator",
+      "text": "You are still deciding when Harrow stops waiting for you to.",
+      "next": "harrow_timeout_02"
+    },
+    "harrow_timeout_02": {
+      "type": "line",
+      "speaker": "medic",
+      "text": "That's all right. Most men freeze. It's the ones who move fast you have to worry about.",
+      "next": "harrow_timeout_03"
+    },
+    "harrow_timeout_03": {
+      "type": "line",
+      "speaker": "narrator",
+      "text": "He lowers the saw himself, on his own schedule, having established whose schedule it is.",
+      "next": "deduce_setup_01"
+    },
+
+    "deduce_setup_01": {
+      "type": "line",
+      "speaker": "medic",
+      "text": "Since we're all standing here being reasonable. Somebody opened that undercroft. I'd like to know who, because I'd like to know whether they can do it again.",
+      "shot": { "framing": "wide", "hold": 1.0 },
+      "next": "deduce_setup_02"
+    },
+    "deduce_setup_02": {
+      "type": "line",
+      "speaker": "medic",
+      "text": "Vaethari sappers had been digging under that wall for six weeks. I pulled two of them out of the rubble myself, still in their harness, four hundred feet from where any tunnel of theirs should have ended.",
+      "effects": [ { "rumor": "vaethari_broke_the_seal", "source": "medic" } ],
+      "next": "deduce_setup_03"
+    },
+    "deduce_setup_03": {
+      "type": "line",
+      "speaker": "narrator",
+      "text": "There was a Vaethari sapper alive in this field yesterday, according to Harrow. He was not alive by the time Harrow finished with his leg.",
+      "next": "deduce_setup_04"
+    },
+    "deduce_setup_04": {
+      "type": "line",
+      "speaker": "medic",
+      "text": "He kept saying the same thing over and over. Didn't make sense then. Doesn't now.",
+      "next": "deduce_setup_05"
+    },
+    "deduce_setup_05": {
+      "type": "line",
+      "speaker": "medic",
+      "text": "He said: we never got that deep. He said it in Aldrethi so I'd understand him. That's a thing a man does when he wants to be believed.",
+      "effects": [ { "rumor": "sappers_never_reached_it", "source": "medic" } ],
+      "next": "deduce_setup_06"
+    },
+    "deduce_setup_06": {
+      "type": "line",
+      "speaker": "narrator",
+      "text": "Three accounts. None of them can be checked. All of them come from people with a reason to be wrong.",
+      "next": "deduce_01"
+    },
+
+    "deduce_01": {
+      "type": "deduction",
+      "header": "WHAT DO YOU ACTUALLY BELIEVE?",
+      "question": "Who opened the undercroft at Kharwyn Hold?",
+      "commit_prompt": "Your conclusion — you will act on this:",
+      "statements": [
+        {
+          "who": "medic",
+          "rumor": "vaethari_broke_the_seal",
+          "text": "Vaethari sappers had been digging under that wall for six weeks. I pulled two out of the rubble myself."
+        },
+        {
+          "attrib": "A DYING VAETHARI SAPPER",
+          "rumor": "sappers_never_reached_it",
+          "text": "We never got that deep."
+        },
+        {
+          "who": "brother",
+          "rumor": "something_spoke_in_the_breach",
+          "text": "While I was falling, something spoke. And I answered it."
+        }
+      ],
+      "options": [
+        {
+          "id": "d_vaethari",
+          "text": "The Vaethari did it. They dug too far and they broke something.",
+          "tone": "cold",
+          "effects": [
+            { "flag": "believes_vaethari_fault" },
+            { "learn": "vaethari_broke_the_seal" }
+          ],
+          "next": "deduce_vaethari"
+        },
+        {
+          "id": "d_earlier",
+          "text": "Somebody was down there before the siege. The sappers only found the door.",
+          "tone": "curious",
+          "effects": [
+            { "flag": "believes_someone_was_first" },
+            { "learn": "someone_was_there_first" },
+            { "remember_text": "You have started keeping your own counsel." }
+          ],
+          "next": "deduce_earlier"
+        },
+        {
+          "id": "d_cael",
+          "text": "It was already awake. It opened itself, and it picked someone to talk to.",
+          "tone": "faith",
+          "if": "has_flag('cael_told_you_about_the_voice')",
+          "locked_text": "[Something Cael said — but you never asked him what happened]",
+          "effects": [
+            { "flag": "believes_it_opened_itself" },
+            { "adjust": "brother", "stat": "trust", "by": 2 },
+            { "remember": "brother" }
+          ],
+          "next": "deduce_cael"
+        },
+        {
+          "id": "d_nothing",
+          "text": "Say you don't know. Three days is not long enough to know anything.",
+          "tone": "neutral",
+          "effects": [
+            { "flag": "admitted_ignorance" },
+            { "adjust": "medic", "stat": "trust", "by": 2 }
+          ],
+          "next": "deduce_nothing"
+        }
+      ]
+    },
+
+    "deduce_vaethari": {
+      "type": "line",
+      "speaker": "medic",
+      "text": "That's what I think too. Which ought to worry both of us, because I've been wrong about everything else this week.",
+      "next": "tremor_01"
+    },
+    "deduce_earlier": {
+      "type": "line",
+      "speaker": "narrator",
+      "text": "You keep the thought behind your teeth. If somebody sealed that thing in, somebody knew it was there, and knowing where it is has been somebody's job for a very long time.",
+      "next": "deduce_earlier_02"
+    },
+    "deduce_earlier_02": {
+      "type": "line",
+      "speaker": "medic",
+      "text": "You've gone quiet. That's usually a man deciding not to tell me something.",
+      "next": "tremor_01"
+    },
+    "deduce_cael": {
+      "type": "line",
+      "speaker": "narrator",
+      "text": "Cael's head comes up. It is the first time since you found him that he has looked at you as though you were on the same side of something.",
+      "next": "deduce_cael_02"
+    },
+    "deduce_cael_02": {
+      "type": "line",
+      "speaker": "medic",
+      "text": "That's not a theory, that's a sermon. I've had enough of those.",
+      "next": "tremor_01"
+    },
+    "deduce_nothing": {
+      "type": "line",
+      "speaker": "medic",
+      "text": "Good. Hold onto that. Everybody who's certain right now is about to get somebody killed.",
+      "next": "tremor_01"
+    },
+
+    "tremor_01": {
+      "type": "line",
+      "speaker": "narrator",
+      "text": "The ground goes soft.",
+      "stage": { "shake": 0.6, "pulse": "dread", "intensity": 0.9 },
+      "shot": { "framing": "wide", "hold": 0.5 },
+      "next": "tremor_02"
+    },
+    "tremor_02": {
+      "type": "line",
+      "speaker": "narrator",
+      "text": "Not shaking. Soft, for a quarter of a second, the way ice goes soft before it stops being ice.",
+      "next": "tremor_03"
+    },
+    "tremor_03": {
+      "type": "line",
+      "speaker": "medic",
+      "text": "Tremor. Down, get down, hands off the ground —",
+      "tone": "shout",
+      "stage": { "shake": 1.0, "sting": "impact" },
+      "next": "tremor_04"
+    },
+    "tremor_04": {
+      "type": "line",
+      "speaker": "narrator",
+      "text": "Forty feet away, a row of the dead sits up together. All of them. At the same time, with the same movement, like one thing wearing eleven bodies.",
+      "stage": { "bg": "tunnel_mouth", "palette": "CRYPT", "shake": 0.8, "sting": "reveal" },
+      "shot": { "framing": "wide", "hold": 1.2 },
+      "effects": [
+        { "flag": "saw_the_risen" },
+        { "learn": "tremors_do_this" }
+      ],
+      "next": "tremor_05"
+    },
+    "tremor_05": {
+      "type": "line",
+      "speaker": "narrator",
+      "text": "The colour goes out of everything. Not dark — colourless, as though something is standing between the field and the idea of light.",
+      "next": "tremor_06"
+    },
+    "tremor_06": {
+      "type": "line",
+      "speaker": "narrator",
+      "text": "Cael is still sitting down.",
+      "shot": { "framing": "close", "focus": "brother", "hold": 0.7 },
+      "next": "tremor_07"
+    },
+    "tremor_07": {
+      "type": "line",
+      "speaker": "brother",
+      "text": "It's the same one. It's the same one that spoke.",
+      "tone": "whisper",
+      "next": "qte_01"
+    },
+
+    "qte_01": {
+      "type": "qte",
+      "kind": "rapid_tap",
+      "duration": 3.4,
+      "target": 13,
+      "caption": "GET HIM UP",
+      "shot": { "framing": "mid", "focus": "brother" },
+      "success_effects": [
+        { "flag": "pulled_cael_clear" },
+        { "adjust": "brother", "stat": "loyalty", "by": 2 }
+      ],
+      "fail_effects": [
+        { "flag": "wounded_leg" },
+        { "flag": "cael_pulled_you_clear" },
+        { "adjust": "brother", "stat": "loyalty", "by": 1 }
+      ],
+      "success": "escape_clean_01",
+      "fail": "escape_hurt_01"
+    },
+
+    "escape_clean_01": {
+      "type": "line",
+      "speaker": "narrator",
+      "text": "You get a fist in his collar and haul, and his weight comes with you, and the ground where he was sitting is not ground any more.",
+      "stage": { "shake": 0.7 },
+      "next": "escape_converge_01"
+    },
+
+    "escape_hurt_01": {
+      "type": "line",
+      "speaker": "narrator",
+      "text": "You are slow. Something closes on your leg below the knee, without heat, without pressure, and takes a piece of it out of the world.",
+      "stage": { "shake": 1.0, "sting": "impact" },
+      "next": "escape_hurt_02"
+    },
+    "escape_hurt_02": {
+      "type": "line",
+      "speaker": "narrator",
+      "text": "Then Cael's hands are on you, both of them, lit up, and whatever had your leg lets go of it the way a hand lets go of a hot pan.",
+      "effects": [ { "sting": "magic" } ],
+      "next": "escape_hurt_03"
+    },
+    "escape_hurt_03": {
+      "type": "line",
+      "speaker": "narrator",
+      "text": "Your brother drags you thirty feet through a wheat field with a hand that is not a hand right now, and you will be thinking about that for a long time.",
+      "next": "escape_converge_01"
+    },
+
+    "escape_converge_01": {
+      "type": "line",
+      "speaker": "narrator",
+      "text": "The three of you go over the treeline and keep going until the field is out of sight and then further, because none of you wants to be the one who says stop.",
+      "stage": {
+        "bg": "treeline_dusk",
+        "palette": "VIOLET",
+        "cast": ["protagonist", "brother", "medic"],
+        "bed": "forest",
+        "pulse": "dread",
+        "intensity": 0.2
+      },
+      "shot": { "framing": "wide", "hold": 1.6 },
+      "next": "close_02"
+    },
+    "close_02": {
+      "type": "line",
+      "speaker": "medic",
+      "text": "Right. New information. That's twice now I've seen the dead get up, and both times there was one of the lit ones within a hundred feet.",
+      "next": "close_03"
+    },
+    "close_03": {
+      "type": "line",
+      "speaker": "medic",
+      "text": "I'm not saying he called it. I'm saying I've stopped being able to tell the difference between a man a thing wants and a man who's holding the door for it.",
+      "shot": { "framing": "close", "focus": "medic", "hold": 0.9 },
+      "next": "close_04"
+    },
+    "close_04": {
+      "type": "line",
+      "speaker": "medic",
+      "text": "There's a word going round for people like your brother. The Marked. I don't know who started it. I don't like that everybody already knows it.",
+      "effects": [
+        { "learn": "the_word_marked" },
+        { "rumor": "the_marked_call_the_dead", "source": "medic" }
+      ],
+      "next": "close_05"
+    },
+    "close_05": {
+      "type": "line",
+      "speaker": "narrator",
+      "text": "Cael has not spoken since the field. He is walking with his hands pushed into his coat, and light is coming through the fabric.",
+      "shot": { "framing": "insert", "focus": "brother", "hold": 1.2 },
+      "next": "close_06"
+    },
+    "close_06": {
+      "type": "line",
+      "speaker": "narrator",
+      "text": "Somewhere behind you, a long way off, something under the mountain answers the Tremor with another one.",
+      "stage": { "shake": 0.25, "pulse": "dread", "intensity": 0.55 },
+      "next": "close_07"
+    },
+    "close_07": {
+      "type": "line",
+      "speaker": "narrator",
+      "text": "It is not over. Nobody has told anyone that yet, because nobody knows it, but every one of you felt the ground agree with it.",
+      "next": "close_08"
+    },
+    "close_08": {
+      "type": "line",
+      "speaker": "brother",
+      "text": "It's getting brighter.",
+      "tone": "whisper",
+      "shot": { "framing": "close", "focus": "brother", "hold": 1.4 },
+      "next": "close_09"
+    },
+    "close_09": {
+      "type": "line",
+      "speaker": "narrator",
+      "text": "END OF SCENE ONE",
+      "next": "END"
+    }
+  }
+}

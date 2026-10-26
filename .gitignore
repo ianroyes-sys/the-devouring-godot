@@ -1,0 +1,14 @@
+# Godot
+.godot/
+# export_presets.cfg IS tracked: it holds the iOS build config (bundle id, team, icons) and
+# contains no secrets. Re-add it here if a keystore password is ever stored in it.
+*.translation
+
+# macOS
+.DS_Store
+
+# Build output
+build/
+*.ipa
+*.xcarchive
+__pycache__/
